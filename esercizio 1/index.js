@@ -33,9 +33,9 @@ function calcolaTotale(prodottiDisponibili, callback) {
 
 // Esempio
 const prodotti = [
-  { nome: "Prodotto 1", prezzo: 10 },
-  { nome: "Prodotto 2", prezzo: 20 },
-  { nome: "Prodotto 3", prezzo: 30 },
+  { nome: "Prodotto 1", prezzo: 10, disponibile: true },
+  { nome: "Prodotto 2", prezzo: 20, disponibile: false },
+  { nome: "Prodotto 3", prezzo: 30, disponibile: true },
 ];
 
 applicaSconto(prodotti, 20, (prodottiScontati) => {
