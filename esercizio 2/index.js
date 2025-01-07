@@ -3,7 +3,7 @@ function aggiornaPrezzi(azioni, callback) {
   const aggiornaPrezziIntervallo = setInterval(() => {
     const prezziAggiornati = azioni.map((azione) => ({
       ...azione,
-      prezzo: azione.prezzo + Math.random() * 5 - 2.5,
+      prezzo: azione.prezzo + Math.floor(Math.random() * 5) + 0.5,
     }));
     callback(prezziAggiornati);
   }, 2000);
@@ -15,11 +15,10 @@ function aggiornaPrezzi(azioni, callback) {
 
 // Funzione filtraAzioni
 function filtraAzioni(azioni, callback, soglia) {
-  setInterval(() => {
-    const azioniFiltrate = azioni.filter((azione) => azione.prezzo > soglia);
+  setTimeout(() => {
+    const azioniFiltrate = azioni.filter((azione) => azione.prezzo >= soglia);
     callback(azioniFiltrate);
-    setTimeout(() => {}, 1000); // Simula un ritardo di 1 secondo
-  }, 2000);
+  }, 1000);
 }
 
 // Funzione calcolaValoreTotale
@@ -40,12 +39,12 @@ const azioni = [
 aggiornaPrezzi(
   azioni,
   (azioniAggiornate) => {
-    console.log("Prezzi aggiornati:", azioniAggiornate);
+    //console.log("Prezzi aggiornati:", azioniAggiornate);
 
     filtraAzioni(
       azioniAggiornate,
       (azioniFiltrate) => {
-        console.log("Azioni filtrate:", azioniFiltrate);
+        //console.log("Azioni filtrate:", azioniFiltrate);
 
         calcolaValoreTotale(azioniFiltrate, (valoreTotale) => {
           console.log("Valore totale:", valoreTotale);
